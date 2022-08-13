@@ -16,7 +16,7 @@ export function Comment() {
               </time>
             </div>
             <button title="Deletar Comentário">
-              <Trash />
+              <Trash size={24} />
             </button>
           </header>
           <p>Muito bom parabens</p>
