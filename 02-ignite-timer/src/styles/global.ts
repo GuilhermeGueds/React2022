@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
 
-    border-style, input-security, textarea, button {
+    border-style, input-security, textarea, button, div {
         font-family:  'Roboto', sans-serif;
         font-weight: 400;
         font-size: 1rem;
