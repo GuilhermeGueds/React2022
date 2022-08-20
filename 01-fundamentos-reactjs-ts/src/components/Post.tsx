@@ -1,11 +1,28 @@
-import { format, formatDistanceToNow } from "date-fns/";
+import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 import styles from "./Post.module.css";
 
-export function Post({ author, content, publishedAt }) {
+interface Author {
+  name: string;
+  role: string;
+  avatarUrl: string;
+}
+
+interface Content {
+  type: "pharagraph" | "link";
+  content: string;
+}
+
+export interface PostProps {
+  author: Author;
+  publishedAt: Date;
+  content: Content[];
+}
+
+export function Post({ author, content, publishedAt }: PostProps) {
   const [comments, setComments] = useState([""]);
 
   const [newCommentext, setNewCommentText] = useState("");
@@ -23,11 +40,11 @@ export function Post({ author, content, publishedAt }) {
     addSuffix: true,
   });
 
-  function handleNewComment() {
+  function handleNewComment(event: ChangeEvent<HTMLTextAreaElement>) {
     setNewCommentText(event.target.value);
   }
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault();
 
     // const newCommentText = event.target.comment.value;
@@ -36,8 +53,8 @@ export function Post({ author, content, publishedAt }) {
     setNewCommentText("");
   }
 
-  function deleteComment(comment) {
-    const commentsWithoutDeleteOne = comments.filter((commentToDelete) => {
+  function deleteComment(commentToDelete: string) {
+    const commentsWithoutDeleteOne = comments.filter((comment) => {
       return comment !== commentToDelete;
     });
     setComments(commentsWithoutDeleteOne);
