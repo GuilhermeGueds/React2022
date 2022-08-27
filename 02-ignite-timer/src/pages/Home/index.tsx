@@ -6,7 +6,7 @@ import {
 } from "./styles";
 
 import { createContext, useEffect, useState } from "react";
-import { NewCicleForm } from "./components/NewCycleForm/NewCycleForm";
+//import { NewCicleForm } from "./components/NewCycleForm/NewCycleForm";
 import { Countdown } from "./components/CountDown";
 
 interface Cycle {
@@ -57,32 +57,32 @@ export function Home() {
     setActiveCycledId(null);
   }
 
-  function handleCreateNewCycle(data: NewCycleFormData) {
-    const id = String(new Date().getTime());
+  // function handleCreateNewCycle(data: NewCycleFormData) {
+  //   const id = String(new Date().getTime());
 
-    const newCycle: Cycle = {
-      id,
-      task: data.task,
-      minutesAmount: data.minutesAmount,
-      startDate: new Date(),
-    };
+  //   const newCycle: Cycle = {
+  //     id,
+  //     task: data.task,
+  //     minutesAmount: data.minutesAmount,
+  //     startDate: new Date(),
+  //   };
 
-    setCycles((state) => [...cycles, newCycle]);
-    setActiveCycledId(id);
-    setAmountSecondsPassed(0);
-    reset();
-  }
+  //   setCycles((state) => [...cycles, newCycle]);
+  //   setActiveCycledId(id);
+  //   setAmountSecondsPassed(0);
+  //   reset();
+  // }
 
-  const task = watch("task");
-  const isSubmitDisabled = !task;
+  // const task = watch("task");
+  // const isSubmitDisabled = !task;
 
   return (
     <HomeContainer>
-      <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
+      <form /*onSubmit={handleSubmit(handleCreateNewCycle)}*/ action="">
         <CyclesContext.Provider
           value={{ activeCycle, activeCycleId, markCurrentCycleAsFinished }}
         >
-          <NewCicleForm />
+          {/* <NewCicleForm /> */}
           <Countdown />
         </CyclesContext.Provider>
         {activeCycle ? (
@@ -91,7 +91,7 @@ export function Home() {
             Intenrromper
           </StopCountdownButton>
         ) : (
-          <StartCountdownButton disabled={isSubmitDisabled} type="submit">
+          <StartCountdownButton /*disabled={isSubmitDisabled} */ type="submit">
             <Play size={24} /> Começar
           </StartCountdownButton>
         )}
