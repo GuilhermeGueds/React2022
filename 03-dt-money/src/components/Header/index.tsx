@@ -1,9 +1,5 @@
-import {
-  HeaderContainer,
-  HeaderContent,
-  NewTransactionButton,
-} from "../../pages/Transactions/styles";
 import logo from "../../assets/Logo.svg";
+import { HeaderContainer, HeaderContent, NewTransactionButton } from "./styles";
 export function Header() {
   return (
     <HeaderContainer>
